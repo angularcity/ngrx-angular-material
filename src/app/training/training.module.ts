@@ -1,0 +1,30 @@
+import { SharedModule } from './../shared/shared.module';
+import { NgModule } from '@angular/core';
+import { TrainingComponent } from './training.component';
+import { CurrentTrainingComponent } from './current-training/current-training.component';
+import { NewTrainingComponent } from './new-training/new-training.component';
+import { PastTrainingComponent } from './past-training/past-training.component';
+import { StopTrainingComponent } from './current-training/stop-training.component';
+import { TrainingRoutingModule } from './training-route.module';
+import { StoreModule } from '@ngrx/store';
+import * as fromTraining from './training.reducer';
+
+@NgModule({
+  declarations: [
+    TrainingComponent,
+    CurrentTrainingComponent,
+    NewTrainingComponent,
+    PastTrainingComponent,
+    StopTrainingComponent
+  ],
+  imports: [
+    SharedModule,
+    TrainingRoutingModule,
+    StoreModule.forFeature('training', fromTraining.trainingReducer )
+  ],
+  entryComponents: [StopTrainingComponent],
+  exports:[]
+})
+export class TrainingModule {
+
+}
